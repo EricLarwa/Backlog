@@ -17,9 +17,9 @@ def login():
         password = cred.password
 
         
-        attempts += 1
+        #attempts += 1
             #new_window.geometry("350x150") 
-        while attempts < 3:
+        while attempts < 5:
             if user_entry.get() == username and user_pass.get() == password: 
                 tkmb.showinfo(title="Login Successful",message="You have logged in Successfully") 
                 new_window = ctk.CTkToplevel(app)
@@ -27,14 +27,17 @@ def login():
                 break
             elif user_entry.get() == username and user_pass.get() != password: 
                 tkmb.showwarning(title='Wrong password',message='Please check your password')
+                attempts += 1
                 print(attempts)
-                return attempts
+                return attempts           
             elif user_entry.get() != username and user_pass.get() == password: 
                 tkmb.showwarning(title='Wrong username',message='Please check your username') 
+                attempts += 1
                 print(attempts)
                 return attempts
             else: 
                 tkmb.showerror(title="Login Failed",message="Invalid Username and password") 
+                attempts += 1
                 print(attempts)
                 return attempts
 

@@ -1,14 +1,14 @@
 import { React, useState } from 'react'
 import { Button} from 'react-bootstrap'
-
 import { FaTrash } from 'react-icons/fa'
 import HeaderArea from './HeaderArea'
 
 const Input = () => {
 
     const [columns, setColumns] = useState([
-        [{ type: 'header', content: 'Column 1' }],
-        [{ type: 'card', content: 'Card 1' }]
+        [{ type: 'header', content: 'To-do' }],
+        [{ type: 'header', content: 'Progress' }],
+        [{ type: 'header', content: 'Done' }]
       ]);
 
     const addCard = (columnIndex) => {

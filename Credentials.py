@@ -1,5 +1,3 @@
-#if True is used to collapse the code for easier navigation and can be deleted if not needed
-
 import keyring as kr
 attempts = 0
 registered_users = {}
@@ -21,8 +19,6 @@ def login():
         
         attempts += 1
             #new_window.geometry("350x150") 
-        #for i in range(3):
-            #attempts += 1
         while attempts < 3:
             if user_entry.get() == username and user_pass.get() == password: 
                 tkmb.showinfo(title="Login Successful",message="You have logged in Successfully") 
@@ -31,21 +27,16 @@ def login():
                 break
             elif user_entry.get() == username and user_pass.get() != password: 
                 tkmb.showwarning(title='Wrong password',message='Please check your password')
-                #attempts += 1 
                 print(attempts)
-                #continue
+                return attempts
             elif user_entry.get() != username and user_pass.get() == password: 
                 tkmb.showwarning(title='Wrong username',message='Please check your username') 
-                #attempts += 1
                 print(attempts)
-                #continue
+                return attempts
             else: 
                 tkmb.showerror(title="Login Failed",message="Invalid Username and password") 
-                #attempts += 1
                 print(attempts)
-                #continue
                 return attempts
-                #break
 
         else:
             tkmb.showerror(title="Login Failed",message = 'You have been locked out of your account. Please contact the system administrator.')
@@ -57,10 +48,10 @@ import customtkinter as ctk
 import tkinter.messagebox as tkmb 
 
 
-    # Selecting GUI theme - dark, light , system (for system default) 
+# Selecting GUI theme - dark, light , system (for system default) 
 ctk.set_appearance_mode("dark") 
 
-    # Selecting color theme - blue, green, dark-blue 
+# Selecting color theme - blue, green, dark-blue 
 ctk.set_default_color_theme("blue") 
 
 app = ctk.CTk() 

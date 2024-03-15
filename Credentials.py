@@ -16,8 +16,6 @@ def login():
         username = cred.username
         password = cred.password
 
-        
-        #attempts += 1
             #new_window.geometry("350x150") 
         while attempts < 5:
             if user_entry.get() == username and user_pass.get() == password: 

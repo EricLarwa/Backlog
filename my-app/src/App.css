@@ -79,3 +79,9 @@ div .container {
   margin: 2px;
 
 }
+
+.btn1 {
+  margin: 5px;
+  padding: 2px;
+  margin-left: -35px;
+}

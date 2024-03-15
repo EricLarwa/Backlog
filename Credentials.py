@@ -6,6 +6,7 @@ registered_users = {}
 def register():
         username = user_entry.get()
         password = user_pass.get()
+        registered_users[username] = password
         kr.set_password("Backlog",username,password)
         tkmb.showinfo(title="Registration Successful",message="You have registered a new user successfully. You may now login.")
 

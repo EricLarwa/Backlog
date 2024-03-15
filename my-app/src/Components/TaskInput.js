@@ -2,6 +2,12 @@ import { React } from 'react'
 
 const Input = () => {
     return (
-        <p>working</p>
+        <div className="container">
+            <div>
+                <p>working</p>
+            </div>
+        </div>
     )
 }
+
+export default Input;

@@ -3,53 +3,45 @@
 import keyring as kr
 
 registered_users = {}
-#New Users
+#Register Function
 if True:
     def register():
         username = user_entry.get()
         password = user_pass.get()
-        tkmb.showinfo(title="Registration Successful",message="You have registered a new user successfully")
-        #while True:
-            #print("Please input intended username:")
-            #new_user = input()
-            #new_user_confirmation = input("Is " + new_user + " correct? (yes/no)\n")
-            #if new_user_confirmation == "yes":
-                #break
-            #else: 
-            #    continue
-        #while True:
-            #print("Please input a password for the new user:")
-            #new_password = input()
-            #new_password_confirmation = input("Is " + new_password + " correct? (yes/no)\n")
-            #if new_password_confirmation == "yes":
-            #    kr.set_password("Backlog",new_user,new_password)
-            #    break
-            #else: 
-            #    continue
-        #registered_users[new_user] = new_password
-        
+        tkmb.showinfo(title="Registration Successful",message="You have registered a new user successfully. You may now login.")
 
 #Login Function
 if True:
     def login(): 
-        cred = kr.get_credential("Backlog","")
-        username = cred.username
-        password = cred.password
-        new_window = ctk.CTkToplevel(app) 
+        attempts = 0
+        while attempts < 3:
+            cred = kr.get_credential("Backlog","")
+            username = cred.username
+            password = cred.password
+            #new_window = ctk.CTkToplevel(app) 
 
-        new_window.title("New Window") 
+            #new_window.geometry("350x150") 
 
-        new_window.geometry("350x150") 
-
-        if user_entry.get() == username and user_pass.get() == password: 
-            tkmb.showinfo(title="Login Successful",message="You have logged in Successfully") 
-            #ctk.CTkLabel(new_window,text="GeeksforGeeks is best for learning ANYTHING !!").pack() 
-        elif user_entry.get() == username and user_pass.get() != password: 
-            tkmb.showwarning(title='Wrong password',message='Please check your password') 
-        elif user_entry.get() != username and user_pass.get() == password: 
-            tkmb.showwarning(title='Wrong username',message='Please check your username') 
-        else: 
-            tkmb.showerror(title="Login Failed",message="Invalid Username and password") 
+            if user_entry.get() == username and user_pass.get() == password: 
+                tkmb.showinfo(title="Login Successful",message="You have logged in Successfully") 
+                new_window.title("New Window") 
+                break
+                #ctk.CTkLabel(new_window,text="GeeksforGeeks is best for learning ANYTHING !!").pack() 
+            elif user_entry.get() == username and user_pass.get() != password: 
+                tkmb.showwarning(title='Wrong password',message='Please check your password')
+                attempts += 1 
+                continue
+            elif user_entry.get() != username and user_pass.get() == password: 
+                tkmb.showwarning(title='Wrong username',message='Please check your username') 
+                attempts += 1
+                continue
+            else: 
+                tkmb.showerror(title="Login Failed",message="Invalid Username and password") 
+                attempts += 1
+                continue
+        else:
+            print('You have been locked out of your account. Please contact the system administrator.')
+            exit()
 
 #UI Interface Setup
 if True:
@@ -91,12 +83,6 @@ if True:
     checkbox.pack(pady=12,padx=10) 
 
     app.mainloop()
-
-#Password Retrieval
-if True:
-    print("Please input your username to retreive your password:")
-    username_retrieval = input()
-    print(kr.get_password("Backlog", username_retrieval))
 
 #Login Attempts
 if True:

@@ -4,36 +4,48 @@ body {
   padding: 5;
 }
 
+.App {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  height: 100vh;
+}
+
 div .container {
   display: flex;
   border-style: underline;
   height: 100;
 }
 
-.FormContainer {
+.container {
   display: flex;
+  justify-content: center; 
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  flex-direction: column;
-  padding: 5px;
-  margin: 5px;
+  height: 100vh
 }
 
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  margin-bottom: 10px;
+.column {
+  flex: 1; 
+  padding: 10px;
+  border: 1px solid #ccc; 
+  margin: 15px;
+  width: 100%;
+}
+
+.card {
   padding: 35px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  
-}
 
-.btnContainer {
-  align-self: flex-start;
   margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0);
+}
+.btnContainer {
+  align-content: flex-start;
+  margin-bottom: 10px;
+  border-radius: 15px;
 }
 
 .textBox {
@@ -51,4 +63,14 @@ div .container {
   margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid black;
+}
+
+.FormContainer {
+  height: 100vh;
+  justify-content: center;
+}
+
+.header {
+  font-size: medium;
+
 }

@@ -1,60 +1,56 @@
 import { React, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import {BiPlus} from 'react-icons/bi'
+import { BiPlus } from 'react-icons/bi'
 
 
 const Input = () => {
 
-    const [setName, name] = useState('')
-    const [description, setDescription] = useState('')
+    const [columns, setColumns] = useState([
+        [{ type: 'header', content: 'Column 1' }],
+        [{ type: 'card', content: 'Card 1' }]
+      ]);
 
-    const handleNamechange = (event) => {
-        setName(event.target.value)
-    }
-
-    const handleDecriptionChange = (event) => {
-        setDescription(event.target.value)
-    }
-
-    const HandleKeyPress = (event) => {
-        if (event.key == 'Enter') {
-            handleSubmit();
-        }
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("Submitted:", { name })
-
-        setName('')
-        setDescription('')
+    const addCard = (columnIndex) => {
+        const newColumns = [...columns];
+        newColumns[columnIndex].push({ type: 'card', content: '' });
+        setColumns(newColumns);
     };
+    
+    const handleChange = (event, columnIndex, cardIndex) => {
+        const newColumns = [...columns];
+        newColumns[columnIndex][cardIndex].content = event.target.value;
+        setColumns(newColumns);
+    };
+    
+      return (
+        <div className="container">
+        {columns.map((column, columnIndex) => (
+            <div key={columnIndex} className="column">
+            {column.map((item, cardIndex) => (
+                <div key={cardIndex}>
+                {item.type === 'header' ? (
+                    <input
+                    type="text"
+                    className="header"
+                    placeholder={item.content}
+                    />
+                ) : (
+                    <input
+                    type="text"
+                    className="card"
+                    placeholder={`Card ${cardIndex + 1}`}
+                    value={item.content}
+                    onChange={(event) => handleChange(event, columnIndex, cardIndex)}
+                    />
 
-    return (
-        <form onSubmit={handleSubmit} className='FormContainer'>
-            <div className='inputContainer'>
-                <div classnName="btnContainer">
-                    <Button variant="primary">
-                        <BiPlus />
-                    </Button>
+                )}
                 </div>
-
-                <input className='textBox'
-                    type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    placeholder='Name'
-                    onKeyPress={HandleKeyPress}
-                />
-                <input className="DescBox"
-                    type="text"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                    placeholder='Description'
-                    onKeyPress={HandleKeyPress}
-                />
+            ))}
+            <button onClick={() => addCard(columnIndex)}>Add Card</button>
             </div>
-        </form>
-    )
+        ))}
+        </div>
+      );
 }
 
 export default Input;

@@ -15,10 +15,8 @@ def login():
         cred = kr.get_credential("Backlog","")
         username = cred.username
         password = cred.password
-        
-        attempts += 1
 
-        while attempts < 3:
+        while attempts < 5:
             if user_entry.get() == username and user_pass.get() == password: 
                 onLogin()
                 break
@@ -26,14 +24,19 @@ def login():
             elif user_entry.get() == username and user_pass.get() != password: 
                 tkmb.showwarning(title='Wrong password',message='Please check your password')
                 print(attempts)
+                attempts += 1
+                return attempts
 
             elif user_entry.get() != username and user_pass.get() == password: 
                 tkmb.showwarning(title='Wrong username',message='Please check your username') 
                 print(attempts)
+                attempts += 1
+                return attempts
 
             else: 
                 tkmb.showerror(title="Login Failed",message="Invalid Username and password") 
                 print(attempts)
+                attempts += 1
                 return attempts
         else:
             tkmb.showerror(title="Login Failed",message = 'You have been locked out of your account. Please contact the system administrator.')
@@ -43,7 +46,7 @@ def onLogin():
     tkmb.showinfo(title="Login Successful",message="You have logged in Successfully") 
     new_window = ctk.CTkToplevel(app)
     new_window.title("New Window") 
-    new_Window.geometry("400x400")
+    new_window.geometry("400x400")
 
 #UI Interface Setup
 import customtkinter as ctk 

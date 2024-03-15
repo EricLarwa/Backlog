@@ -1,7 +1,54 @@
 body {
   background-color: white;
-  margin: 0;
-  padding: 0;
+  margin: 5;
+  padding: 5;
 }
 
+div .container {
+  display: flex;
+  border-style: underline;
+  height: 100;
+}
 
+.FormContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-bottom: 10px;
+  padding: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+}
+
+.btnContainer {
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.textBox {
+  border-bottom-width: 1px;
+  border-color: black;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+
+}
+
+.DescBox {
+  border-bottom-width: 1px;
+  border-color: black;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+}

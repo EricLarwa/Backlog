@@ -6,25 +6,28 @@ registered_users = {}
 #New Users
 if True:
     def register():
-        while True:
+        username = user_entry.get()
+        password = user_pass.get()
+        tkmb.showinfo(title="Registration Successful",message="You have registered a new user successfully")
+        #while True:
             #print("Please input intended username:")
             #new_user = input()
             #new_user_confirmation = input("Is " + new_user + " correct? (yes/no)\n")
             #if new_user_confirmation == "yes":
-            #    break
+                #break
             #else: 
             #    continue
         #while True:
-            print("Please input a password for the new user:")
-            new_password = input()
-            new_password_confirmation = input("Is " + new_password + " correct? (yes/no)\n")
-            if new_password_confirmation == "yes":
-                kr.set_password("Backlog",new_user,new_password)
-                break
-            else: 
-                continue
-        registered_users[new_user] = new_password
-        tkmb.showinfo(title="Registration Successful",message="You have registered a new user successfully")
+            #print("Please input a password for the new user:")
+            #new_password = input()
+            #new_password_confirmation = input("Is " + new_password + " correct? (yes/no)\n")
+            #if new_password_confirmation == "yes":
+            #    kr.set_password("Backlog",new_user,new_password)
+            #    break
+            #else: 
+            #    continue
+        #registered_users[new_user] = new_password
+        
 
 #Login Function
 if True:

@@ -9,14 +9,14 @@ const Input = () => {
         [{ type: 'header', content: 'To-do' }],
         [{ type: 'header', content: 'Progress' }],
         [{ type: 'header', content: 'Done' }]
-      ]);
+    ])
 
     const addCard = (columnIndex) => {
         const newColumns = [...columns];
         newColumns[columnIndex].push({ type: 'card', content: '' });
         setColumns(newColumns);
     };
-    
+
     const handleChange = (event, columnIndex, cardIndex) => {
         const newColumns = [...columns];
         newColumns[columnIndex][cardIndex].content = event.target.value;
@@ -48,7 +48,7 @@ const Input = () => {
                                         value={item.content}
                                         onChange={(event) => handleChange(event, columnIndex, cardIndex)}
                                     />
-                                    <Button variant="danger" onClick={() => handleDeleteCard(columnIndex)(cardIndex)}>
+                                    <Button variant="danger" onClick={() => handleDeleteCard(columnIndex)(cardIndex)} className='btn1'>
                                         <FaTrash />
                                     </Button>
                                 </div>

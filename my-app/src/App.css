@@ -72,6 +72,16 @@ div .container {
 }
 
 .header {
-  font-size: medium;
+  font-size: large;
+  border: none;
+  border-style: none;
+  padding: 5px;
+  margin: 2px;
 
+}
+
+.btn1 {
+  margin: 5px;
+  padding: 2px;
+  margin-left: -35px;
 }
